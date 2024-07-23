@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel = "stylesheet" href="home.css">
+</head>
+<body>
+    
+    <div id="navbar">
+        <h1> Add Items </h1>
+        <a href="home.html">HOME</a>
+        <a href="sign-up.html">Sign-Up</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <div>
+        <input type="text" placeholder="Name of the Product" id="in1">
+        <input placeholder="Image of the Product" id="img">
+        <input type="text" placeholder="Price of the Product" id="pr">
+        <button onclick="setLocal()"> Add </button>
+    </div>
+    <div id="mainDiv"></div>
+</body>
+</html>
+<script>
+
+    function setLocal(){
+        
+        let name = document.getElementById("in1").value;
+        let image = document.getElementById("img").value;
+        let price = document.getElementById("pr").value;
+
+       //get the already existing products or get the empty array if no items there
+       let products = JSON.parse(localStorage.getItem("products")) || [];
+
+       //create object 
+       let newProduct = {
+        name: name,
+        image: image,
+        price: price
+       };
+
+       //add the new product to array
+       products.push(newProduct);
+
+       //store the updated array back in local Storage
+       localStorage.setItem('products', JSON.stringify(products));
+
+       //clearing input for next items
+       document.getElementById("in1").value = "";
+       document.getElementById("img").value = "";
+       document.getElementById("pr").value = "";
+    }
+</script>

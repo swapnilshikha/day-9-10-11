@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="navbar">
+        <a href="homePage.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="additem.html">Add</a>
+        <h1>Update!!</h1>
+    </div>
+    
+    
+    <input type="text" name="" id="id" placeholder="id" />
+    <input type="text" name="" id="title" placeholder="title" />
+    <input type="text" name="" id="price" placeholder="price" />
+    <input type="text" name="" id="description" placeholder="description" />
+    <input type="text" name="" id="category" placeholder="category" />
+    <input type="text" name="" id="image" placeholder="image" />
+    <input type="text" name="" id="rate" placeholder="rate" />
+    <input type="text" name="" id="count" placeholder="count" />
+    <button onclick="update()">Update</button>
+</body>
+</html>
+<script>
+    let updInd = JSON.parse(localStorage.getItem("updInd"));
+    let data = JSON.parse(localStorage.getItem("data"));
+     document.getElementById("id").value = data[updInd].id;
+     document.getElementById("title").value = data[updInd].title;
+     document.getElementById("price").value = data[updInd].price;
+     document.getElementById("description").value = data[updInd].description;
+     document.getElementById("category").value = data[updInd].category;
+     document.getElementById("image").value = data[updInd].image;
+     document.getElementById("rate").value = data[updInd].rating.rate;
+     document.getElementById("count").value = data[updInd].rating.count;
+    function update(){
+         data[updInd].id=document.getElementById("id").value;
+        data[updInd].title=document.getElementById("title").value;
+         data[updInd].price= document.getElementById("price").value ;
+     data[updInd].description=document.getElementById("description").value ;
+      data[updInd].category=document.getElementById("category").value;
+     data[updInd].image= document.getElementById("image").value ;
+      data[updInd].rating.rate=document.getElementById("rate").value;
+    data[updInd].rating.count= document.getElementById("count").value;
+
+    localStorage.setItem("data", JSON.stringify(data));
+
+    }
+</script>

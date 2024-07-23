@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <input type="text" id = "imp">
+    <button onclick = "saveToLocal()">SAVE</button>
+    <BUTTON ONCLICK="getFromLocal()">GET</BUTTON>
+    <a href="project.html">Set Page</a>
+</head>
+<body>
+    <script>
+        function saveToLocal(){
+            let imp = document.querySelector("imp");
+            localStorage.setItem("input", JSON.stringify(imp.value));
+        }
+
+        function getFromLocal(){
+            let data = JSON.parse(localStorage.getItem("input")) || "Input key not present " // or [] as empty array;
+            for(let i=0; i<data.length; i++)
+           {
+            console.log(data[i]);
+           }
+        }
+
+        localStorage.removeItem("input"); //as it is globally declared as soon as we refresh it will delete the input
+        localStorage.clear(); 
+        // removeitem delete the particular item whereas clear will remove all the items 
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+Local Storage :
+(Day-9)
+
+CRUD :- create, read, update, delete
+These functions are the four pillars of a complete CRUD API(and full stack application) 
+
+ayusH == ayush (still not same because ascii of H and h is different)
+ayusH === ayush (false)
+
+Assignment of Local storage : 2 pages .
+1. Signup page - input items and save in local storage 
+2. home page - retrieve it from 1st page and then display dynamically.
+
+Steps to create a react project :-
+npm create vite@latest
+cd filename
+npm install
+npm run dev
+
+Arrow Function 
+()=>{
+console.log(x);
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--<a href="homePage.html">home</a>
+    <a href="login2.html">login</a>
+    <a href="signup2.html">signup</a>--->
+
+    <h1>Sign-Up</h1>
+    <div>
+        <input type="text" id="username" required> 
+        <input type="password" id="pass" required>
+        <button onclick="signupfun()">Sign-Up</button>
+    </div>
+
+</body>
+</html>
+<script>
+    let signupdata=JSON.parse(localStorage.getItem("signuparry")) || []
+    console.log(signupdata);
+    //let signupdata=[];
+    // let x=localStorage.getItem("signuparray");
+    //console.log(x);
+    //if(x===null){
+    //    signupdata=[];
+    //}
+    //else{
+    //    signupdata=JSON.parse(x);
+    //}
+    let flag=false;
+    let username=document.querySelector("#username");
+    let pass=document.querySelector("#pass");
+    function signupfun(){
+        let obj={
+            username:username.value,
+            pass:pass.value
+        }
+        for(let i=0;i<signupdata.length;i++){
+            if(signupdata[i].username === obj.username){
+                flag=true;
+                alert("User already exist! Directly login to the page !");
+                //window.location.assign("home.html");
+            }else{
+                flag=false;
+            }
+        }
+        if(flag === false)
+        {
+            if(obj.username!=="" && obj.pass!==""){
+                signupdata.push(obj);
+            }
+            localStorage.setItem("signuparray",JSON.stringify(signupdata));//must add JSON.stringify()
+        }
+        console.log(signupdata);
+
+     }
+</script>

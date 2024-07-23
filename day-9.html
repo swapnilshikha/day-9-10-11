@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="saveToLocal()">Click</button>
+    <button onclick="getFromLocal()">GET</button>
+</body>
+</html>
+<script>
+
+    let arr = [1,2,3,4,5];
+    function saveToLocal(){
+        localStorage.setItem("name", "Ayush"); //key, value
+        localStorage.setItem("name", "Megha");
+        localStorage.setItem("name", "Raj"); //as key name is same so only recent value is saved , ie, when we inspect we see only name,Raj
+        localStorage.setItem("phone", "6200428337");
+        localStorage.setItem("phone", JSON.stringify(12345678));//conert to string
+        localStorage.setItem("add", "Jamshedpur"); //key should always be unique 
+        //if we want to store multiple data into same key, we need to create Array
+        
+        let x = JSON.stringify(1,2,3,4,5);
+         localStorage.setItem("array1", x);
+    }
+
+    function getFromLocal(){
+            let ph = localStorage.getItem("phone");
+            console.log(typeof(ph), ph, "get function");
+            console.log(typeof(56), 56);
+            let arr = localStorage.getItem("array");
+            console.log(typeof(arr), arr);
+            let array1 = localStorage.getItem("array1");
+            console.log(typeof(array1), array1);
+        }
+        
+</script>

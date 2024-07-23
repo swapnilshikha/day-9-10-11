@@ -1,0 +1,19 @@
+#navbar{
+    display:flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    border-bottom: 5px double black;
+}
+a{
+    padding-top: 30px;
+}
+input{
+    width : 27%;
+    height : 50px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+button {
+    width : 16%;
+    height: 50px;
+}

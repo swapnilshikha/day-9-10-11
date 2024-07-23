@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!---Get data from local Storage and append it here-->
+
+    <div id="navbar">
+        <a href="homePage.html">Home</a>
+        <h1>Add Items</h1>
+        <a href="cart.html">Add to Cart</a>
+        <a href="upd.html">Update</a>
+    </div>
+    
+
+    <input type="text" id="id"  placeholder="Id">
+    <input type="text" id="title"  placeholder="Title">
+    <input type="text" id="price"  placeholder="Price">
+    <input type="text" id="description"  placeholder="Description">
+    <input type="text" id="category"  placeholder="Category">
+    <input type="text" id="image"  placeholder="Image">
+    <input type="text" id="rate"  placeholder="Rating">
+    <input type="text" id="count"  placeholder="Count">
+    <button onclick="addData()">Add</button>
+
+</body>
+</html>
+
+<script>
+    //HOW TO UPDATE DATA
+     //let data[3].price = 56;
+
+// let arr = [1,2,3,4,5,6];
+// //arr.splice(startingIndex, DeleteCount, {Element to add after starting index});
+// arr.splice(1,2,[1,2,3]);
+// console.log(arr);
+
+// //output is : [1,[1,2,3],4,5,6];
+
+// arr.splice(3,1,8);
+// console.log(arr); //when we need to remove an item from the cart, we will use splice.
+// // example,      data.splice(1,1); 
+
+    let data = JSON.parse(localStorage.getItem("data")) || []; //get the data from the stored cartArray in localstorage
+    console.log(data);
+    
+    function addData()
+    {
+        let id = document.getElementById("id"); //retrieve the values from id
+        let title = document.getElementById("title");
+        let price = document.getElementById("price");
+        let description = document.getElementById("description");
+        let category = document.getElementById("category");
+        let image = document.getElementById("image");
+        let rate = document.getElementById("rate");
+        let count = document.getElementById("count");
+
+        let obj = {
+            id : id.value,
+            title : title.value,
+            price : price.value,
+            description: description.value,
+            category : category.value,
+            image : image.value,
+            rating : {
+                rate : rate.value,
+                count : count.value,
+            }
+        };
+
+            data.push(obj);
+            localStorage.setItem("data",JSON.stringify(data));
+    }
+
+</script>

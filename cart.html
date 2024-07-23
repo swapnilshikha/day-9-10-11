@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="navbar">
+        <a href="homePage.html">Home</a>
+        <a href="additem.html">Add Items</a>
+        <h1>Cart</h1>
+        <a href="upd.html">Update</a>
+    </div>
+    
+</body>
+</html>
+<script>
+        let cartArray=JSON.parse(localStorage.getItem("cart")) || [];
+        let data = JSON.parse(localStorage.getItem("data")) ||[];
+        let body =document.querySelector("body");
+        let mainDiv = document.createElement("div");
+        mainDiv.style.display="flex";
+        mainDiv.style.flexWrap = "wrap";
+        mainDiv.innerHTML = "";
+    function display()
+        {
+            mainDiv.innerHTML = "";
+            for(let i=0; i<cartArray.length; i++) 
+            {
+            let proDiv = document.createElement("div");
+            proDiv.style.width = "300px"
+            proDiv.style.border = "1px solid black";
+
+            let title = document.createElement("h1");
+            let price = document.createElement("p");
+            let desc = document.createElement("p");
+            let img = document.createElement("img");
+            let rate = document.createElement("p");
+
+            title.innerText = cartArray[i].title; 
+            price.innerText = cartArray[i].price;
+            desc.innerText = cartArray[i].description;
+            rate.innerText = cartArray[i].rating.rate;
+            img.src = cartArray[i].image;
+            img.style.width="100px";
+           
+            let delBtn = document.createElement("button");
+            delBtn.innerText = "Delete";
+            delBtn.addEventListener("click", function(){
+                delData(i);
+            });
+
+            proDiv.append(title,price,desc,img, rate, delBtn);
+            mainDiv.append(proDiv);
+
+          }
+           body.append(mainDiv);
+        }
+        display();
+
+        function delData(ind){
+            data.splice(ind, 1);
+            localStorage.setItem("data", JSON.stringify(data));
+            display();
+        }
+</script>
